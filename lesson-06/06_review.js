@@ -31,6 +31,7 @@ console.log(answerSpeed);
 let bigger = a > b ? (a > c ? a : c) : b > c ? b : c;
 
 
+
 let userName = prompt("enter your user name?");
 let lastName = prompt("enter your last name?");
 let firstName = prompt("enter your first name ?");
@@ -82,7 +83,6 @@ if (choice == 1) {
   } else {
     console.log("not a philindrom");
   }
-
 }
 /*
 //SWITCH CASE
