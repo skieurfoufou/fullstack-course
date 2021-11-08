@@ -1,3 +1,4 @@
+///*
 // Version 1
 let inputStr = "applE, BanaNa, Kiwi, AvOCado, CheRry, FiGs, LeMon, GrapEs";
 inputStr = inputStr + ",";
@@ -17,7 +18,7 @@ while (separatorIndex != -1) {
 
   separatorIndex = inputStr.indexOf(",", separatorIndex + 1);
 }
-
+/*
 // Version 2
 const inputStr = "applE, BanaNa, Kiwi, AvOCado, CheRry, FiGs, LeMon, GrapEs";
 const inputArray = inputStr.split(",");
@@ -27,3 +28,4 @@ for (let i = 0; i < inputArray.length; i++) {
   word = word.charAt(0).toUpperCase() + word.slice(1);
   console.log(`${word} | ${word.length}`);
 }
+*/
