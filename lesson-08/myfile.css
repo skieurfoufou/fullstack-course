@@ -1,0 +1,50 @@
+p {
+  color: red; /*define color of all Paragraph tag*/
+  letter-spacing: 0.5em;
+  word-spacing: 2em;
+  line-height: 1.5;
+  text-align: center;
+}
+a {
+  color: blue; /*define color of all link tag*/
+}
+body {
+  /*define attribute of all the body tag*/
+  font-size: 0.8em; /*define size of the font ,em is size fixed*/
+  /* there is others units: px(pixel),pt(point),%(percent*/
+  color: navy;
+}
+/*you can define color red like this:
+red
+rgb(255,0,0)
+rgb(100%,0%,0%)
+#ff0000
+#f00*/
+/*there is 17 colors defined: aqua, black, blue, fuchsia, gray,
+ green, lime, maroon, navy, olive, orange, purple, red, silver,
+  teal(couleur sarcelle = jolie vert), white, yellow,transparent.*/
+
+h1 {
+  /*define attributes of title*/
+  color: yellow;
+  background-color: blue;
+  margin: 1em; /*distance outside the element*/
+  padding: 3em; /*distance inside the element*/
+}
+h2 {
+  border-style: dashed;
+  border-width: 3px;
+  border-left-width: 10px;
+  border-right-width: 10px;
+  border-color: red;
+}
+body {
+  font-family: "Times New Roman"; /*define name of the font*/
+  font-weight: bold; /*define the bold of the text*/
+  /*normal, bold, bolder, lighter, 100, 200, 300, 400, 500, 600, 700, 800, 900, and inherit.*/
+  font-style: italic;
+  text-decoration: underline; /*bold line under the text*/
+  /*there is also:overline , line-through*/
+  text-transform: uppercase; /*transform all the text in uppercase*/
+  /*there is also: lowercase,capitalize(only the first letter is uppercase)*/
+}
