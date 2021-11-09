@@ -1,6 +1,6 @@
 let animal = ["lion", "monkey", "cat", "dog", "bear", "dolphin", "bee"];
 console.log(animal[0]); // output "lion"
-console.log(animal[animal.length - 1]); //output of the last menber of the array
+console.log(animal[animal.length - 1]); //output of the last member of the array
 
 let arr = [1, 2, 3, 4, 5, [7, 8, 9]];
 console.log(arr[5][2]); // output 8

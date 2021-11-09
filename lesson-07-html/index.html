@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        color: darkblue;
+        margin-right: 10px;
+      }
+      #myId {
+        display: flex;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p>this is paragraph 1</p>
+    <p style="color: darkorange">this is paragraph 2</p>
+
+    <div id="myId" style="background: darkseagreen">
+      <p>salut</p>
+      <p>hy</p>
+      <p>bonjourno</p>
+      <h4>salut !</h4>
+    </div>
+    <style>
+      img {
+        width: 500px;
+      }
+      button {
+        color: deeppink;
+        height: 100px;
+      }
+    </style>
+    <div>
+      <h1 id="passWord">Hello world</h1>
+      <img src="../../../../Downloads/ski-wallpaper.jpeg" alt="" />
+      <input type="text" onchange="myFunc()" />
+      <button>click me !</button>
+    </div>
+    <script>
+      function myFunc()
+      document.getElementById("passWord").innerHTML = "hello Javascript";
+    </script>
+  </body>
+</html>
