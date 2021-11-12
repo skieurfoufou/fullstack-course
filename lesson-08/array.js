@@ -22,6 +22,15 @@ animal.indexOf(); // to find the index of the member
 for (i of animal) {
   console.log(i);
 }
+for (let index = 0; index < animal.length; index++) {
+  const i = animal[index];
+  console.log(i);
+}
+
+const names = [];
+for (const name of names) {
+  console.log(name);
+}
 
 for (i in animal.reverse) {
   console.log(animal[i]);
