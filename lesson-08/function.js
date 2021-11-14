@@ -25,6 +25,7 @@ saySomething3("hello", "*");
 saySomething3("good morning", "!");
 */
 
+//exercise to do in class
 function randomNumber(num1, num2) {
   return Math.round((num2 - num1) * Math.random() + num1);
 }
