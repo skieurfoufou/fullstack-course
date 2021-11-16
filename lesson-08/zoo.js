@@ -134,7 +134,7 @@ function getAnimalName(animal) {
   let animalName = "";
   for (let i = 0; i < animal.length; i++) {
     const character = animal[i];
-    if (character.match(/[a-z]/i)) {
+    if (character.match(/[a-z]/i)) { //i is for upper or lower case 
       animalName += character;
     }
   }
