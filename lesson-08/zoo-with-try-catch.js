@@ -117,7 +117,7 @@ function deleteAnimal(animal, animalList) {
   }
 }
 
-// ----- PRINTING FUNCTIONS -----
+// ----- ANIMAL PRINTING FUNCTIONS -----
 function printAnimal(code, animal) {
   console.log(`animal code: ${code}\nanimal name: ${animal}`);
 }
@@ -135,7 +135,7 @@ function printAnimals(animalArray) {
   }
 }
 
-// ----- HELPER FUNCTIONS -----
+// ----- ANIMAL HELPER FUNCTIONS -----
 function getAnimalName(animal) {
   let animalName = "";
   for (let i = 0; i < animal.length; i++) {

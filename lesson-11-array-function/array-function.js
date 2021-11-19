@@ -17,8 +17,8 @@ let result2 = names.find((v, i) => v.length == 5 && i % 2 != 0);
 console.log(result2);
 
 let char = "il";
-let res = names.filter((v) => v.includes(char));
-console.log(res);
+let result3 = names.filter((v) => v.includes(char));
+console.log(result3);
 
 let result3 = names.map((v) => v.toUpperCase());
 console.log(result3);
@@ -44,3 +44,16 @@ arrayNum
 //exercise 4
 console.log("is exist:${arrayNum.find(v=>v==770)?true:false");
 //console.log("is exist: ${arrayNum.some})
+
+// the inside of the reduce
+function myReduce(arr, func, initialValue) {
+  let acc = initialValue;
+  for (const el of arr) {
+    acc = func(acc, el);
+  }
+  return acc;
+}
+
+arr = [1, 2, 3];
+
+myReduce(arr, (acc, el) => acc + el, 0);
