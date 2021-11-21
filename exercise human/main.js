@@ -191,7 +191,6 @@ function runMenuChoiceEdit(arrHumans) {
 
       runMenuEditDetails(humanById);
       break;
-
     case "1":
       const inputId = getStringFromUser(
         "enter the name you search, please? (only letters)"
@@ -321,6 +320,7 @@ function isAllDigits(str) {
 function isAllAlphabet(str) {
   for (const ch of str) {
     if (!ch.match(/[a-z| ]/i)) {
+      //also /^[A-Za-z]+$/
       console.log("error, only a-z");
       return false;
     }

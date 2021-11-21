@@ -1,0 +1,43 @@
+<style></style>
+
+<form action="" method="get">
+  <div>
+    <label for="name">name </label>
+    <input
+      name="name"
+      id="name"
+      type="text"
+      placeholder="enter your text here"
+    />
+  </div>
+  <div>
+    <label for="email">Email</label>
+    <input
+      name="email"
+      id="email"
+      type="email"
+      required
+      placeholder="enter your text here"
+    />
+  </div>
+  <div>
+    <label for="number">Number</label>
+    <input
+      name="number"
+      id="number"
+      min="-15"
+      max="25"
+      step="5"
+      type="number"
+      required
+      placeholder="enter your text here"
+    />
+  </div>
+  <input type="checkbox" />
+  <button onclick="kuku()">Click Me</button>
+</form>
+<script>
+  function kuku() {
+    document.getElementById("name");
+  }
+</script>
