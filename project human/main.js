@@ -125,7 +125,9 @@ function deleteHuman(arrHumans, idToDelete) {
 
   console.log("deleted");
 }
-
+function checkIfExist(id) {
+  return arrHumans.find((p) => p.id == id) ? true : false;
+}
 //**************** MENU FUNCTIONS ********************
 
 function runMenu(arrHumans) {

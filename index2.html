@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-weight: bold;
+        font-size: 250%;
+        background-color: salmon;
+      }
+      p {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      let age = "";
+      age = window.prompt("quel age avez vous ?");
+      if (age >= 18) {
+        alert(`vous avez ${age} ans vous pouvez entrer`);
+      } else {
+        alert("dsl vous avez moins de 18 ans");
+      }
+    </script>
+    <h1>JavaScript:window.prompt()</h1>
+    <script>
+      if (window.confirm("voulez vous quitter le site ?")) {
+        alert("au revoir");
+      } else {
+        alert("restons ensemble !");
+      }
+    </script>
+    <h1>JavaScript:window.confirm()</h1>
+    <script type="text/javascript">
+      switch (new Date().getDay()) {
+        case 0:
+          day = "Sunday";
+          break;
+        case 1:
+          day = "Monday";
+          break;
+        case 2:
+          day = "Tuesday";
+          break;
+        case 3:
+          day = "Wednesday";
+          break;
+        case 4:
+          day = "Thursday";
+          break;
+        case 5:
+          day = "Friday";
+          break;
+        case 6:
+          day = "Saturday";
+          break;
+      }
+      document.write(`today we are : ${day}`);
+    </script>
+    <p>Salut</p>
+  </body>
+</html>
