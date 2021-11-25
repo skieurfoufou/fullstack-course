@@ -1,47 +1,52 @@
 <style>
+  .container {
+    position: relative;
+    top: 50vh;
+    width: 50vw;
+    margin: 0 auto;
+  }
+
   .relative {
+    margin: 0 auto;
     width: 100px;
     height: 100px;
-    margin-left: auto;
-    margin-right: auto;
     background-color: darkorange;
-    top: 250px;
-    position: relative;
-    border-radius: 10px;
+    /* top: 250px; */
+    border-radius: 10%;
     border: black 4px solid;
   }
   .left {
-    position: absolute;
     width: 20px;
     height: 20px;
-    margin-left: 395px;
-    top: 237px;
+    /* margin-left: 395px; */
+    /* top: 237px; */
     background-color: darkviolet;
     border-radius: 10px;
     border: rgb(211, 32, 0) 4px solid;
   }
   .right {
-    position: absolute;
     width: 20px;
     height: 20px;
-    margin-left: 524px;
-    top: 238px;
+    /* margin-left: 524px; */
+    /* top: 238px; */
     background-color: rgb(211, 32, 0);
     border-radius: 10px;
     border: darkviolet 4px solid;
   }
   div:hover {
-    border-radius: 0px;
+    border-radius: 50%;
   }
   .eye-right {
     width: 5px;
     height: 5px;
-    margin-left: 450px;
+    /* margin-left: 450px; */
     background-color: black;
     z-index: 5;
   }
 </style>
-<div class="relative"></div>
-<div class="left"></div>
-<div class="right"></div>
-<div class="eye-right"></div>
+<div class="container">
+  <div class="relative"></div>
+  <div class="left"></div>
+  <div class="right"></div>
+  <div class="eye-right"></div>
+</div>

@@ -1,16 +1,16 @@
 //*************** TRIGGER FUNCTIONS ******************
 
 function triggerFindHumanById(arrHumans) {
-  printHuman(
-    findHumanById(
-      arrHumans,
-      getIdFromUser("enter the id number you search, please? (only 9 numbers)")
-    )
+  const human = findHumanById(
+    arrHumans,
+    getIdFromUser("enter the id number you search, please? (only 9 numbers)")
   );
+
+  human?.print();
 }
 
 function triggerFindHumanByName(arrHumans) {
-  printHumanArr(
+  printHumans(
     findHumansByName(
       arrHumans,
       getStringFromUser("enter the name you search, please? (only letters)")
@@ -55,30 +55,41 @@ function triggerDeleteHuman(arrHumans) {
 function triggerEditDetails(arrHumans) {
   runMenuChoiceEdit(arrHumans);
 }
+function triggerQueriesAndReports() {
+  runMenuChoiceQueriesAndReports();
+}
 
 //******************* FUNCTIONS **********************
 
 function createHuman(firstName, lastName, id, city, bDate, idParent) {
   let human = {
+    // PROPRIETIES
     firstName: firstName,
     lastName: lastName,
     idNumber: id,
     city: city,
     birthDate: bDate,
     idParent: idParent,
+
+    // METHODS
+    getAge: function () {
+      return getDiffOfDatesInYears(new Date(this.birthDate), new Date());
+    },
+    print: function (indent = 0) {
+      let lines = [
+        `${this.firstName} ${this.lastName} | ID :${this.idNumber}`,
+        `BORN THE :${this.birthDate} | AGE :${this.getAge()}`,
+        `LIVES IN :${this.city}`,
+      ];
+      const tabs = Array(indent).fill("\t").join("");
+      lines = lines.map((line) => tabs + line);
+      console.log(lines.join(`\n`));
+
+      if (confirm("do you want to print his children ?"))
+        printChildren(this.idNumber, indent + 1);
+    },
   };
   return human;
-}
-
-function calculateAge(birthDateStr) {
-  const today = new Date();
-  const birthDate = new Date(birthDateStr);
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const month = today.getMonth() - birthDate.getMonth();
-  if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
-    age--;
-  }
-  return age;
 }
 
 function getDateFromUser(promptStr) {
@@ -125,9 +136,23 @@ function deleteHuman(arrHumans, idToDelete) {
 
   console.log("deleted");
 }
-function checkIfExist(id) {
-  return arrHumans.find((p) => p.id == id) ? true : false;
+function getAgeFromUser(promptStr) {
+  let inputAge = prompt(promptStr);
+  // ? Business Rule: In the Torah we CANNOT live past 121 but until the last moment yes...
+  while (
+    !isAllDigits(inputAge) &&
+    Number(inputAge) <= 0 &&
+    Number(inputAge) >= 121
+  ) {
+    inputAge = prompt(promptStr);
+  }
+  return inputAge;
 }
+
+function getChildren(idParent) {
+  return arrHumans.filter((human) => human.idParent === idParent);
+}
+
 //**************** MENU FUNCTIONS ********************
 
 function runMenu(arrHumans) {
@@ -139,12 +164,13 @@ function runMenu(arrHumans) {
     "[3] Add a new human to the database",
     "[4] Delete a human from the database",
     "[5] Edit details",
-    "[6] Exit",
+    "[6] Queries and reports",
+    "[7] Exit",
   ]);
 
   switch (key) {
     case "0":
-      printHumanArr(arrHumans);
+      printHumans(arrHumans);
       break;
     case "1":
       triggerFindHumanById(arrHumans);
@@ -162,6 +188,9 @@ function runMenu(arrHumans) {
       triggerEditDetails(arrHumans);
       break;
     case "6":
+      triggerQueriesAndReports();
+      break;
+    case "7":
       return "exit";
     default:
       alert("not a good choice!");
@@ -262,32 +291,128 @@ function runMenuEditDetails(human) {
       break;
   }
 }
+function runMenuChoiceQueriesAndReports() {
+  const key = menu([
+    "Choose queries or report",
+    "[0] Find all human from age",
+    "[1] Find all children of a human",
+    "[2] Find all humans by the orders",
+    "[3] Find all humans who lives in a city",
+    "[4] Exit",
+  ]);
+
+  switch (key) {
+    case "0":
+      const humanAge = getAgeFromUser(
+        "enter the age you search, please? (only numbers, from 1 to 120)"
+      );
+
+      const arr = arrHumans.filter((human) => human.getAge() >= humanAge);
+      printHumans(arr);
+      break;
+
+    case "1":
+      const inputId = getIdFromUser(
+        "enter the ID of the human you want to print his children, please? (only 9 numbers)"
+      );
+      printChildren(inputId);
+      break;
+
+    case "2":
+      const allHumans = arrHumans.map((el) => el);
+      const validHumans = [];
+      // Check if the month is even
+      for (let i = 0; i < allHumans.length; i++) {
+        const human = allHumans[i];
+        if ((new Date(human.birthDate).getMonth() + 1) % 2 === 0) {
+          validHumans.push(...allHumans.splice(i--, 1));
+        }
+      }
+      //He have 2 children at least
+      for (let i = 0; i < allHumans.length; i++) {
+        const human = allHumans[i];
+        if (getChildren(human.idNumber).length >= 2) {
+          console.log("ASdf");
+          validHumans.push(...allHumans.splice(i--, 1));
+        }
+      }
+      // check if palindrome
+      for (let i = 0; i < allHumans.length; i++) {
+        const human = allHumans[i];
+        if (
+          checkIfOneOfTheHumansArePalindrome(
+            getChildren(human.idNumber).concat(human)
+          )
+        ) {
+          validHumans.push(...allHumans.splice(i--, 1));
+        }
+      }
+      printHumans(validHumans);
+      break;
+
+    case "3":
+      const cityToHumansMap = {};
+      arrHumans.forEach((human) => {
+        if (!cityToHumansMap[human.city]) {
+          cityToHumansMap[human.city] = [human];
+        } else {
+          cityToHumansMap[human.city].push(human);
+        }
+      });
+
+      for (const city in cityToHumansMap) {
+        const humansInCity = cityToHumansMap[city];
+        console.log(`${city}:`);
+        printHumans(humansInCity);
+      }
+      break;
+
+    case "4":
+      return "exit";
+
+    default:
+      alert("not a good choice!");
+      break;
+  }
+}
+
+function checkIfOneOfTheHumansArePalindrome(humans) {
+  return humans.some(
+    (human) =>
+      checkPalindrome(human.firstName) || checkPalindrome(human.lastName)
+  );
+}
+
+function checkPalindrome(str) {
+  return str == str.split("").reverse().join("");
+}
+
 //************** PRINTING FUNCTIONS *****************
 
-function printHumanArr(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    printHuman(arr[i]);
-  }
-}
-function printHuman(human) {
-  console.log(
-    `${human.firstName} ${human.lastName} | ID :${human.idNumber}\nBORN THE :${
-      human.birthDate
-    } | AGE :${calculateAge(human.birthDate)} \nLIVES IN :${human.city}`
-  );
-
-  if (confirm("do you want to print his children ?"))
-    printChildren(human.idNumber);
+function printHumans(humans, indent) {
+  humans.forEach((human) => human.print(indent));
 }
 
-function printChildren(idParent) {
-  for (human of arrHumans) {
-    if (human.idParent === idParent) {
-      printHuman(human);
-    }
-  }
+function printChildren(idParent, indent) {
+  printHumans(getChildren(idParent), indent);
 }
+
 //*************** HELPER FUNCTIONS ******************
+
+/**
+ * This gets me the difference between two dates in years
+ * @param {Date} date1 should be the old date
+ * @param {Date} date2 should be the new date
+ * @returns number of years
+ */
+function getDiffOfDatesInYears(date1, date2) {
+  let diffInYears = date2.getFullYear() - date1.getFullYear();
+  const month = date2.getMonth() - date1.getMonth();
+  if (month < 0 || (month === 0 && date2.getDate() < date1.getDate())) {
+    diffInYears--;
+  }
+  return diffInYears;
+}
 
 function isDateValid(dateStr) {
   const d = new Date(dateStr);
@@ -361,7 +486,7 @@ function main() {
     createHuman(
       "tehila",
       "benichou",
-      "123456789",
+      "325288355",
       "kochav yaakov",
       "2002,11,15",
       "304711377"
@@ -374,7 +499,7 @@ function main() {
       "111111111",
       "kochav hachahar",
       "2003,08,01",
-      "72356787312345"
+      "123123123"
     )
   );
   arrHumans.push(
@@ -382,9 +507,29 @@ function main() {
       "mordehai",
       "benichou",
       "304711377",
-      "kochav yaacov",
+      "kochav yaakov",
       "1971,02,24",
       "789456123"
+    )
+  );
+  arrHumans.push(
+    createHuman(
+      "naomie",
+      "zenou",
+      "209552553",
+      "san francisco",
+      "1996,11,14",
+      "304711377"
+    )
+  );
+  arrHumans.push(
+    createHuman(
+      "kalalak",
+      "boop",
+      "321321321",
+      "san francisco",
+      "1000,10,10",
+      "209552553"
     )
   );
 
