@@ -1,0 +1,28 @@
+ul {
+  border: 2px solid black;
+  padding: 40px;
+  margin-right: 200px;
+  margin-left: 250px;
+}
+#left {
+}
+#right {
+}
+span {
+  border-radius: 10px;
+  border: 2px solid black;
+  padding: 40px;
+  margin: 20px;
+}
+h1 {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+div {
+  display: inline-block;
+}
