@@ -8,26 +8,27 @@
     <script defer src="app.js"></script>
     <link
       rel="stylesheet"
-      href="style.css"
+      href="style2.css"
       type="text/css"
       media="screen"
       title="Styles css"
     />
   </head>
   <body>
-    <h1>MY STORE</h1>
-    <div>
-      <div id="left">
-        <h3>Items</h3>
-        <ul id="products-list"></ul>
+    <h1 class="title shadow">My Store</h1>
+    <div class="store-container">
+      <div class="products-container shadow">
+        <h3 class="list-title">Items</h3>
+        <ul class="list" id="products-list"></ul>
+        <button class="add-button">+</button>
       </div>
-      <div id="right">
-        <h3>Cart</h3>
-        <ul id="cart"></ul>
+      <div class="cart-container shadow">
+        <h3 class="list-title">Cart</h3>
+        <ul class="list" id="cart"></ul>
       </div>
       <div>
-        <h3>Total</h3>
-        <span id="total"> sum $ </span>
+        <h3 class="list-title">Total</h3>
+        <span id="total" class="shadow">Sum: 0$</span>
       </div>
     </div>
   </body>

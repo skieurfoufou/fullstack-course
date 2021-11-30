@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  background-color: #480ca8;
+  font-size: 120%;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+div.products-container,
+div.cart-container {
+  border: 2px solid black;
+  border-radius: 25px;
+  padding: 25px;
+  margin: 1vh 2vw;
+  background-color: #b5179e;
+  color: white;
+  min-width: 150px;
+  min-height: 5vh;
+}
+
+ul.list {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul.list > li {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 10px 25px 25px 10px;
+}
+
+ul.list > li:hover {
+  background-color: #3f37c9;
+  transition: all 0.2s;
+}
+
+#total {
+  background-color: #f72585;
+  border: 2px solid black;
+  padding: 25px;
+  border-radius: 50px;
+  min-width: 100px;
+  margin: 1vh 2vw;
+  display: inline-block;
+  color: white;
+  font-weight: bold;
+}
+
+h1.title {
+  text-align: center;
+  background-color: #3f37c9;
+  text-orientation: sideways;
+  color: #f72585;
+  padding: 15px 0px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+h3.list-title {
+  text-align: center;
+  margin-bottom: 10px;
+  color: white;
+}
+
+div.store-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  height: 80vh;
+  margin: 5vh;
+}
+
+.shadow {
+  -webkit-box-shadow: 1px 15px 31px 0px rgba(0, 0, 0, 0.32);
+  box-shadow: 1px 15px 31px 0px rgba(0, 0, 0, 0.32);
+}
+
+button.add-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #ac1b96;
+  background-color: #58054c;
+  color: white;
+  font-size: 150%;
+}
+
+button.add-button:hover {
+  width: 55px;
+  height: 55px;
+  background-color: #31032a;
+  transition: all 1s;
+}
