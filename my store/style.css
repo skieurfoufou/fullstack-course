@@ -1,18 +1,28 @@
+body {
+  background-color: cyan;
+  font-size: 120%;
+}
+
 ul {
   border: 2px solid black;
-  padding: 40px;
-  margin-right: 200px;
-  margin-left: 250px;
+  padding: 10vh;
+  margin-right: 15vh;
+  margin-left: 15vh;
 }
 #left {
+  background-color: rgb(224, 106, 195);
 }
 #right {
+  background-color: rgb(224, 49, 18);
 }
 span {
+  background-color: darkorange;
   border-radius: 10px;
   border: 2px solid black;
-  padding: 40px;
-  margin: 20px;
+  padding: 10vh;
+  margin-right: 15vh;
+  margin-left: 15vh;
+  display: inline-block;
 }
 h1 {
   text-align: center;

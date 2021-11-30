@@ -38,7 +38,7 @@ function onProductClick(event) {
   // render the TOTAL amount of the cart (view)
   const totalElement = document.getElementById("total");
   const cartTotal = cart.getTotal();
-  totalElement.textContent = `Sum: ${cartTotal}$`;
+  totalElement.textContent = `Sum: ${cartTotal.toFixed(2)}$`;
 }
 
 // MAIN
