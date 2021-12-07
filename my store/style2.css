@@ -65,7 +65,7 @@ div.store-container {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
-  height: 80vh;
+  height: 60vh;
   margin: 5vh;
 }
 
@@ -83,10 +83,33 @@ button.add-button {
   color: white;
   font-size: 150%;
 }
+button.add-button2 {
+  width: 150px;
+  height: 50px;
+  border-radius: 20px;
+  border: 2px solid #ac1b96;
+  background-color: #58054c;
+  color: white;
+  font-size: 100%;
+}
 
 button.add-button:hover {
   width: 55px;
   height: 55px;
   background-color: #31032a;
   transition: all 1s;
+}
+div.form {
+  border: 2px solid black;
+  border-radius: 25px;
+  padding: 25px;
+  margin: 10vh 35vw;
+  background-color: #bd2b6d;
+  color: white;
+  min-width: 50px;
+  min-height: 5vh;
+  text-align: center;
+}
+.hidden {
+  visibility: hidden;
 }

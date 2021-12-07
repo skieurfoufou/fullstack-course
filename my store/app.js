@@ -1,3 +1,5 @@
+// ============== FUNCTIONS ==================
+
 function createProduct(name, price) {
   return { name, price, id: `P${productsList.length}` };
 }
@@ -21,18 +23,34 @@ function renderProductsList() {
 function addCartItem(productToAdd) {
   // added the product to the cart (data)
   cart.items.push(productToAdd);
-
+  //added the product in the local Storage
+  saveToLocalStorage();
+  console.log(localStorage.myCart);
   // render the new product to the cart (view)
   const cartElement = document.getElementById("cart");
-
   const cartItem = document.createElement("li");
-  cartItem.textContent = `${productToAdd.name}`;
-  cartItem.setAttribute("data-id", productToAdd.id);
+
+  //render the product from the locale Storage
+  getFromLocalStorage();
+  //cartItem.textContent = `${productToAdd.name}`;
+  //cartItem.setAttribute("data-id", productToAdd.id);
   cartElement.appendChild(cartItem);
   // remove an item from the card list
   cartItem.addEventListener("dblclick", onCartItemDblClick);
 
   renderTotal();
+}
+function saveToLocalStorage() {
+  localStorage.myCart = JSON.stringify({ cart });
+}
+function getFromLocalStorage() {
+  if (localStorage.myCart) {
+    let productFromLocal = [];
+    productFromLocal = JSON.parse(localStorage.myCart);
+    console.log(productFromLocal);
+    cart = productFromLocal;
+    cartItem.textContent = `${productFromLocal[items].name}`;
+  }
 }
 
 function renderTotal() {
@@ -62,11 +80,29 @@ function onCartItemDblClick(event) {
 }
 
 function onAddProductButtonClick(event) {
-  productsList.push(createProduct("Marshmallow", 15));
+  const div = document.querySelector(".form");
+  div.classList.toggle("hidden");
+}
+
+function addProductToList(product) {
+  productsList.push(product);
   renderProductsList();
 }
 
-// MAIN
+function onFormProductSubmit(event) {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+
+  const productName = String(formData.get("title")).toLowerCase();
+  const productPrice = Number(formData.get("price"));
+
+  addProductToList(createProduct(productName, productPrice));
+  onAddProductButtonClick();
+  event.target.reset();
+}
+
+//********************MAIN*******************
 const productsList = [];
 productsList.push(createProduct("Milk", 5));
 productsList.push(createProduct("Bamba", 2.4));
@@ -91,5 +127,8 @@ renderProductsList();
 const addProductButtonElement = document.querySelector(
   ".products-container > .add-button"
 );
-
 addProductButtonElement.addEventListener("click", onAddProductButtonClick);
+
+//Add event to the form for the submit button
+const form = document.querySelector("form");
+form.addEventListener("submit", onFormProductSubmit);
