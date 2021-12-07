@@ -20,37 +20,42 @@ function renderProductsList() {
   });
 }
 
+function renderCartItems() {
+  const cartElement = document.getElementById("cart");
+  cartElement.innerHTML = "";
+
+  cart.items.forEach((cartItemData) => {
+    // render the new product to the cart (view)
+    const cartItemEl = document.createElement("li");
+
+    //render the product from the locale Storage
+    cartItemEl.textContent = `${cartItemData.name}`;
+    cartItemEl.setAttribute("data-id", cartItemData.id);
+    cartElement.appendChild(cartItemEl);
+
+    // remove an item from the card list
+    cartItemEl.addEventListener("dblclick", onCartItemDblClick);
+  });
+}
+
 function addCartItem(productToAdd) {
   // added the product to the cart (data)
   cart.items.push(productToAdd);
+  renderCartItems();
+
   //added the product in the local Storage
   saveToLocalStorage();
-  console.log(localStorage.myCart);
-  // render the new product to the cart (view)
-  const cartElement = document.getElementById("cart");
-  const cartItem = document.createElement("li");
-
-  //render the product from the locale Storage
-  getFromLocalStorage();
-  //cartItem.textContent = `${productToAdd.name}`;
-  //cartItem.setAttribute("data-id", productToAdd.id);
-  cartElement.appendChild(cartItem);
-  // remove an item from the card list
-  cartItem.addEventListener("dblclick", onCartItemDblClick);
 
   renderTotal();
 }
+
 function saveToLocalStorage() {
-  localStorage.myCart = JSON.stringify({ cart });
+  localStorage.setItem("cart", JSON.stringify(cart.items));
 }
+
 function getFromLocalStorage() {
-  if (localStorage.myCart) {
-    let productFromLocal = [];
-    productFromLocal = JSON.parse(localStorage.myCart);
-    console.log(productFromLocal);
-    cart = productFromLocal;
-    cartItem.textContent = `${productFromLocal[items].name}`;
-  }
+  const cartData = JSON.parse(localStorage.getItem("cart"));
+  cart.items = cartData ?? [];
 }
 
 function renderTotal() {
@@ -73,6 +78,7 @@ function onProductClick(event) {
 function onCartItemDblClick(event) {
   // This only delete the data in the array not in the view
   cart.deleteProduct(event.target.dataset.id);
+  saveToLocalStorage();
 
   // Re-render the view
   event.target.remove();
@@ -122,6 +128,12 @@ const cart = {
 };
 
 renderProductsList();
+
+// Load saved data from local storage
+getFromLocalStorage();
+
+renderCartItems();
+renderTotal();
 
 // Add event listener to add product button
 const addProductButtonElement = document.querySelector(
