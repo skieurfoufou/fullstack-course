@@ -20,9 +20,6 @@ window.onload = function () {
 };
 
 function main() {
-  player1 = "cross"; //prompt("what's your name player one ?");
-  player2 = "circle"; //prompt("what's your name player two ?");
-
   initGame();
 
   const gameBoxes = document.querySelectorAll(".game-box");
@@ -203,15 +200,43 @@ function showResetButton() {
   bd.style.opacity = "1";
 }
 
-function initGame() {
+function showInputPlayers() {
+  p1 = document.querySelector("p");
+  p1.textContent = "PLAYER'S NAME";
+  const bd = document.querySelector(".backdrop");
+  bd.style.visibility = "visible";
+  bd.style.opacity = "1";
+  const np = document.querySelector(".modal-2");
+  np.style.visibility = "visible";
+  np.style.opacity = "1";
+}
+
+function inputPlayerName() {
+  const ip1 = document.getElementById("player-1");
+  player1 = ip1.value;
+  console.log(player1);
+  const ip2 = document.getElementById("player-2");
+  player2 = ip2.value;
+
   p1 = document.querySelector("p");
   p1.textContent = getInstructionText();
 
-  const rb = document.querySelector(".modal");
+  const np = document.querySelector(".modal-2");
+  np.style.visibility = "hidden";
+  np.style.opacity = "0";
+}
+
+function initGame() {
+  showInputPlayers();
+
+  const sb = document.querySelector(".submit-button");
+  sb.addEventListener("click", inputPlayerName);
+
   const bd = document.querySelector(".backdrop");
   bd.style.visibility = "hidden";
   bd.style.opacity = "0";
 
+  const rb = document.querySelector(".modal");
   rb.style.visibility = "hidden";
   rb.style.opacity = "0";
   rb.addEventListener("click", initGame);

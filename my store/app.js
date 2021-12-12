@@ -13,11 +13,21 @@ function renderProductsList() {
   // for each product create a product and render it (view)
   productsList.forEach((product) => {
     const productElement = document.createElement("li");
+
     productElement.textContent = `${product.name} | ${product.price}$`;
     productElement.setAttribute("data-id", product.id);
     productElement.addEventListener("click", onProductClick);
     productsListElement.appendChild(productElement);
   });
+}
+
+function saveProductsToLocalStorage() {
+  localStorage.setItem("productList", JSON.stringify(productsList));
+}
+
+function getProductsFromLocalStorage() {
+  const productListData = JSON.parse(localStorage.getItem("productList"));
+  productsList = productListData ?? [];
 }
 
 function renderCartItems() {
@@ -44,16 +54,16 @@ function addCartItem(productToAdd) {
   renderCartItems();
 
   //added the product in the local Storage
-  saveToLocalStorage();
+  saveItemsToLocalStorage();
 
   renderTotal();
 }
 
-function saveToLocalStorage() {
+function saveItemsToLocalStorage() {
   localStorage.setItem("cart", JSON.stringify(cart.items));
 }
 
-function getFromLocalStorage() {
+function getItemsFromLocalStorage() {
   const cartData = JSON.parse(localStorage.getItem("cart"));
   cart.items = cartData ?? [];
 }
@@ -78,7 +88,7 @@ function onProductClick(event) {
 function onCartItemDblClick(event) {
   // This only delete the data in the array not in the view
   cart.deleteProduct(event.target.dataset.id);
-  saveToLocalStorage();
+  saveItemsToLocalStorage();
 
   // Re-render the view
   event.target.remove();
@@ -92,6 +102,7 @@ function onAddProductButtonClick(event) {
 
 function addProductToList(product) {
   productsList.push(product);
+  saveProductsToLocalStorage();
   renderProductsList();
 }
 
@@ -109,12 +120,15 @@ function onFormProductSubmit(event) {
 }
 
 //********************MAIN*******************
-const productsList = [];
-productsList.push(createProduct("Milk", 5));
-productsList.push(createProduct("Bamba", 2.4));
-productsList.push(createProduct("Cheese", 3));
-productsList.push(createProduct("Meat", 60));
-productsList.push(createProduct("Chicken", 38.2));
+let productsList = [];
+getProductsFromLocalStorage();
+if (productsList.length === 0) {
+  productsList.push(createProduct("Milk", 5));
+  productsList.push(createProduct("Bamba", 2.4));
+  productsList.push(createProduct("Cheese", 3));
+  productsList.push(createProduct("Meat", 60));
+  productsList.push(createProduct("Chicken", 38.2));
+}
 
 const cart = {
   items: [],
@@ -130,7 +144,7 @@ const cart = {
 renderProductsList();
 
 // Load saved data from local storage
-getFromLocalStorage();
+getItemsFromLocalStorage();
 
 renderCartItems();
 renderTotal();
