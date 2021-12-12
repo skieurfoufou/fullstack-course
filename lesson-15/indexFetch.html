@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h2>let AJAX change this text 2</h2>
+      <p id="joketext">Empty...</p>
+      <button type="button" onclick="printFetchObject()">Change content</button>
+    </div>
+    <script>
+      function handleCall() {}
+
+      function printFetchObject() {
+        fetch("http://api.icnbd.com/jokes/random").then((val) =>
+          console.log(val)
+        );
+      }
+      function printFetchBody() {
+        fetch("http://api.icnbd.com/jokes/random")
+          .then((response) => response.text())
+          .then((text) => JSON.parse(text))
+          .then((body) => handleCall(body));
+      }
+      function usingThen1() {
+        fetch("http://api.icnbd.com/jokes/random")
+          .then((val) => console.log(val))
+          .catch((err) => console.log(err));
+      }
+      function usingThen2() {
+        fetch("http://api.icnbd.com/jokes/random")
+          .then((response) => response.text())
+          .then((data) => console.log(data));
+      }
+      async function usingAsyncAwait() {
+        const response = await fetch("http://api.icnbd.com/jokes/random");
+        const data = await response.text();
+        console.log(data);
+      }
+    </script>
+  </body>
+</html>

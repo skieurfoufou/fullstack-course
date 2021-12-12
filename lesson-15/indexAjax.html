@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h2>let AJAX change this text</h2>
+      <p id="joketext">Empty...</p>
+      <button type="button" onclick="loadJoke()">Change content</button>
+    </div>
+    <script>
+      function loadJoke() {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {
+          console.log(this.responseText);
+          const parsedJson = JSON.parse(this.responseText);
+          console.log(parsedJson);
+          const joke = parsedJson.value.joke;
+          console.log(parsedJson.value.joke);
+          document.getElementById("jokeText").innerHTML = joke;
+        };
+        xhttp.open("GET", "http://api.icndb.com/jokes/random", true);
+        xhttp.send();
+      }
+      //   let myPromise=new Promise(function(myResolve,myReject))
+      //   {
+      //       const req=sendReq("1234567");
+      //       if(req.status===200){
+      //           myResolve(user)
+      //       }myReject("ERROR!");
+      //   }
+    </script>
+  </body>
+</html>
