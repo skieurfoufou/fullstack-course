@@ -56,6 +56,8 @@ function createCategoryListItem(category) {
   categoryEl.textContent = category;
   categoryEl.dataset.id = category;
   categoryEl.classList.add("list-item");
+  categoryEl.style.fontSize = "40px";
+  categoryEl.addEventListener("click", getRandomJoke(category));
   return categoryEl;
 }
 
