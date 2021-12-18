@@ -19,7 +19,6 @@ function getRandomJoke(category) {
   return fetch(randomJokeUrl)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       return data;
     })
     .catch((err) => {
@@ -70,6 +69,49 @@ function renderCategoriesList(categories) {
   });
 }
 
+function createJokeElement({ value, categories, icon_url }) {
+  const jokeEl = document.createElement("div");
+  jokeEl.classList.add("joke-item");
+
+  const imageEl = document.createElement("img");
+  imageEl.classList.add("joke-image");
+  imageEl.src = icon_url;
+  jokeEl.appendChild(imageEl);
+
+  const titleEl = document.createElement("div");
+  titleEl.classList.add("joke-title");
+  titleEl.textContent = "Joke Of Category: " + categories;
+  jokeEl.appendChild(titleEl);
+
+  const textEl = document.createElement("div");
+  textEl.classList.add("joke-text");
+  textEl.textContent = value;
+  jokeEl.appendChild(textEl);
+
+  return jokeEl;
+}
+
+async function showRandomJoke() {
+  const jokeData = await getRandomJoke();
+  const jokesListEl = document.querySelector("#jokes-list");
+  jokesListEl.innerHTML = "";
+  console.log(jokeData);
+  const jokeEl = createJokeElement(jokeData);
+  jokesListEl.appendChild(jokeEl);
+}
+
+async function showQueryJokes(event) {
+  const query = event.target.value;
+  try {
+    const jokes = await freeTextSearch(query);
+    console.log(jokes);
+    //TODO: show all the jokes in the list and clear the list before
+    // forEach(joke in jokes) => (createJokeElement());
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 getCategories()
   .then((categories) => {
     renderCategoriesList(categories);
@@ -78,4 +120,8 @@ getCategories()
     console.log(err);
   });
 
-getRandomJoke().then().catch();
+const buttonEl = document.querySelector("button");
+buttonEl.addEventListener("click", showRandomJoke);
+
+const inputEl = document.querySelector("input");
+inputEl.addEventListener("input", showQueryJokes);
