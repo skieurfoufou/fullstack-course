@@ -56,7 +56,7 @@ function createCategoryListItem(category) {
   categoryEl.dataset.id = category;
   categoryEl.classList.add("list-item");
   categoryEl.style.fontSize = "40px";
-  categoryEl.addEventListener("click", getRandomJoke(category));
+  categoryEl.addEventListener("click", () => showRandomJoke(category));
   return categoryEl;
 }
 
@@ -73,15 +73,19 @@ function createJokeElement({ value, categories, icon_url }) {
   const jokeEl = document.createElement("div");
   jokeEl.classList.add("joke-item");
 
+  const headerEl = document.createElement("div");
+  headerEl.classList.add("joke-header");
+  jokeEl.appendChild(headerEl);
+
   const imageEl = document.createElement("img");
   imageEl.classList.add("joke-image");
   imageEl.src = icon_url;
-  jokeEl.appendChild(imageEl);
+  headerEl.appendChild(imageEl);
 
   const titleEl = document.createElement("div");
   titleEl.classList.add("joke-title");
   titleEl.textContent = "Joke Of Category: " + categories;
-  jokeEl.appendChild(titleEl);
+  headerEl.appendChild(titleEl);
 
   const textEl = document.createElement("div");
   textEl.classList.add("joke-text");
@@ -91,22 +95,31 @@ function createJokeElement({ value, categories, icon_url }) {
   return jokeEl;
 }
 
-async function showRandomJoke() {
-  const jokeData = await getRandomJoke();
+async function showRandomJoke(category) {
+  const jokeData = category
+    ? await getRandomJoke(category)
+    : await getRandomJoke();
   const jokesListEl = document.querySelector("#jokes-list");
   jokesListEl.innerHTML = "";
-  console.log(jokeData);
   const jokeEl = createJokeElement(jokeData);
   jokesListEl.appendChild(jokeEl);
 }
 
 async function showQueryJokes(event) {
   const query = event.target.value;
+  if (query.length < 3) {
+    return;
+  }
   try {
     const jokes = await freeTextSearch(query);
-    console.log(jokes);
-    //TODO: show all the jokes in the list and clear the list before
-    // forEach(joke in jokes) => (createJokeElement());
+
+    const jokesListEl = document.querySelector("#jokes-list");
+    jokesListEl.innerHTML = "";
+
+    jokes.result.forEach((jokeData) => {
+      const jokeEl = createJokeElement(jokeData);
+      jokesListEl.appendChild(jokeEl);
+    });
   } catch (error) {
     console.log(error);
   }
@@ -121,7 +134,7 @@ getCategories()
   });
 
 const buttonEl = document.querySelector("button");
-buttonEl.addEventListener("click", showRandomJoke);
+buttonEl.addEventListener("click", () => showRandomJoke());
 
 const inputEl = document.querySelector("input");
 inputEl.addEventListener("input", showQueryJokes);

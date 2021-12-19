@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 #input-search {
   padding-left: 150px;
   padding-right: 30px;
@@ -56,34 +60,57 @@ h2 {
 
 .list-item {
   background-color: aquamarine;
+  cursor: pointer;
 }
 #jokes-list-container {
   background-color: yellowgreen;
-  height: 800px;
+  min-height: 800px;
   width: 75%;
   margin-left: 50px;
-  display: inline;
   border: 3px solid blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 h1 {
-  padding: 30px;
-  width: 250px;
+  padding: 2rem;
+  width: 25%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   font-size: 35px;
-  margin-top: 0px;
-  margin-left: 35%;
   font-style: oblique;
   border: 3px solid black;
   background-color: rgb(91, 224, 64);
 }
 .joke-item {
+  margin: 1rem;
   border-radius: 15px;
   border: 4px solid green;
-  display: inline-flexbox;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.joke-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  align-content: center;
+  flex-direction: row;
+  background-color: rgb(50, 136, 50);
+  padding: 0.5rem 1rem;
+  width: calc(100% - 2rem);
 }
 
 .joke-title {
   font-size: 35px;
-  background-color: rgb(50, 136, 50);
+  margin-left: 1rem;
+  text-transform: capitalize;
 }
 
 .joke-image {
@@ -91,6 +118,11 @@ h1 {
   width: 64px;
 }
 
+.joke-text::first-letter {
+  text-transform: capitalize;
+}
+
 .joke-text {
   font-size: 25px;
+  margin: 1rem 2rem;
 }
