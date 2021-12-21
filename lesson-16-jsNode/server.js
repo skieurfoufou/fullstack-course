@@ -41,3 +41,13 @@ app.post("/adduser", (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
+
+/**********lesson tuesday evening 21.12.21********/
+let cardToPush = { index: 101 };
+function getCards() {
+  fetch("http://localhost:3000/checks", {
+    method: "POST",
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify(cardToPush),
+  });
+}
