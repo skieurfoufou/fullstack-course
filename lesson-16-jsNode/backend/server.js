@@ -24,8 +24,7 @@ app.get("/food/:item", (req, res) => {
 });
 
 app.get("/food/:item/yummy/:user", (req, res) => {
-  const item = req.params.item;
-  const theBestMen = req.params.user;
+  const { item, user: theBestMen } = req.params;
   res.send(`you picked ${item}, user is : ${theBestMen}`);
 });
 
