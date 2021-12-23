@@ -1,0 +1,140 @@
+div {
+  border: 3px solid black;
+  margin: 10px;
+  font-size: 2rem;
+  text-align: center;
+}
+#header {
+  display: block;
+  background-color: yellow;
+  margin-left: auto;
+  margin-right: auto;
+}
+#header-subtitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: yellowgreen;
+}
+#header2 {
+  flex-grow: 1;
+}
+#main-part {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
+  min-height: 50vh;
+  background-color: red;
+}
+#main-part1,
+#main-part2,
+#main-part3,
+#main-part4 {
+  background-color: deeppink;
+}
+#main-part1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex-grow: 1;
+}
+#main-part1-1,
+#main-part1-2,
+#main-part1-3 {
+  background-color: rgb(250, 76, 169);
+}
+#main-part2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+  flex-grow: 2;
+}
+#main-part2-1,
+#main-part2-2,
+#main-part2-3 {
+  background-color: rgb(250, 103, 181);
+}
+#main-part3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+  flex-grow: 2;
+}
+#main-part3-1,
+#main-part3-2,
+#main-part3-3 {
+  background-color: rgb(245, 144, 198);
+}
+#main-part4 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  flex-grow: 1;
+}
+#main-part4-1,
+#main-part4-2,
+#main-part4-3 {
+  background-color: rgb(247, 184, 218);
+}
+#main-part4-3 {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  align-items: stretch;
+}
+#main-part4-3-1,
+#main-part4-3-2,
+#main-part4-3-3 {
+  background-color: rgb(163, 95, 130);
+}
+
+#footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: orange;
+}
+#footer1,
+#footer3,
+#footer5 {
+  background-color: gold;
+}
+#footer2,
+#footer4,
+#footer6 {
+  background-color: rgb(221, 199, 71);
+}
+#footer1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+#footer3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+#footer5 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+#footer6 {
+  display: flex;
+  flex-direction: column;
+}
+#footer6-1,
+#footer6-2 {
+  background-color: rgb(126, 109, 17);
+}
+#footer6-1 {
+  flex-grow: 1;
+}
+#footer6-2 {
+  flex-grow: 2;
+}
