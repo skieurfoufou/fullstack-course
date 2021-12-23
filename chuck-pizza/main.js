@@ -56,7 +56,11 @@ function createCategoryListItem(category) {
   categoryEl.dataset.id = category;
   categoryEl.classList.add("list-item");
   categoryEl.style.fontSize = "40px";
+  categoryEl.style.border = "2px dotted blue";
+  categoryEl.style.color = "blue";
+  categoryEl.style.fontFamily = "Arial";
   categoryEl.addEventListener("click", () => showRandomJoke(category));
+  //categoryEl.addEventListener("mouseover",()=>{categoryEl.style.background-color="yellow"})
   return categoryEl;
 }
 
