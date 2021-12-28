@@ -1,0 +1,39 @@
+.product {
+  border: 2px solid yellowgreen;
+  border-radius: 15px;
+  background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  min-height: 65vh;
+  width: 25vw;
+  margin: 5px;
+}
+.image {
+  height: 30vh;
+  width: auto;
+  border-radius: 15px;
+}
+.model-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 5px;
+  font-size: x-large;
+}
+.sub-product {
+  margin: 5px;
+  padding: 10px;
+  font-size: large;
+}
+.price {
+  border: 1px dotted orange;
+  color: orangered;
+  background-color: rgb(157, 255, 0);
+}
+
+.button {
+  background-color: rgb(255, 196, 0);
+  font-size: larger;
+  cursor: pointer;
+}

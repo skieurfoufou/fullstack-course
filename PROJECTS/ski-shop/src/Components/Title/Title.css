@@ -1,0 +1,8 @@
+.Title {
+  border: 4px solid red;
+  border-left: none;
+  border-right: none;
+  color: red;
+  text-align: center;
+  background-image: https://cdn.pixabay.com/photo/2015/09/09/17/57/ski-932188__340.jpg;
+}
