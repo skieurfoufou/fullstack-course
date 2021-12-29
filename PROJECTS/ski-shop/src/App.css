@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+.back {
+  background-image: url(https://blog.okapi.fr/image/59f78a6a96807_dBKjnVOsWHB2nJZJZ4REnCaNoNg@906x453.png);
+}
 
 .App-logo {
   height: 40vmin;

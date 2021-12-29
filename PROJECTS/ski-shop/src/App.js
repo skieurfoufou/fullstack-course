@@ -129,7 +129,7 @@ function App() {
     prices: ["200-500", "501-700", "701-1000"],
   };
   return (
-    <div>
+    <div className="back">
       <Title text="SKI SHOP" />
       <Filters filters={filters} />
       <ProductsList products={products} />
