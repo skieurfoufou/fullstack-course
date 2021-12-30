@@ -1,7 +1,54 @@
-.product {
-  border: 2px solid yellowgreen;
+.Rossignol {
+  border: 3px solid yellowgreen;
   border-radius: 15px;
-  background-color: yellow;
+  background-image: url("https://www.logolynx.com/images/logolynx/d7/d732a22b2cb5dd0c87829f70bd6a0da5.jpeg ");
+  background-size: 30vh;
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: 60%;
+  background-color: burlywood;
+  display: flex;
+  flex-direction: column;
+  min-height: 65vh;
+  width: 25vw;
+  margin: 5px;
+}
+.Head {
+  border: 3px solid yellowgreen;
+  border-radius: 15px;
+  background-image: url("https://www.icon-icon.com/wp-content/uploads/2021/06/HEAD-1-1024x805.png ");
+  background-size: 30vh;
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: 60%;
+  display: flex;
+  flex-direction: column;
+  min-height: 65vh;
+  width: 25vw;
+  margin: 5px;
+}
+.Salomon {
+  border: 3px solid yellowgreen;
+  border-radius: 15px;
+  background-image: url("http://lofrev.net/wp-content/photos/2016/11/salomon_logo.jpg ");
+  background-size: 30vh;
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: 60%;
+  display: flex;
+  flex-direction: column;
+  min-height: 65vh;
+  width: 25vw;
+  margin: 5px;
+}
+.Dynastar {
+  border: 3px solid yellowgreen;
+  border-radius: 15px;
+  background-image: url("https://www.nicepng.com/png/detail/804-8041120_northern-ski-works-carries-a-broad-selection-of.png");
+  background-size: 30vh;
+  background-repeat: no-repeat;
+  background-position-x: 50%;
+  background-position-y: 60%;
   display: flex;
   flex-direction: column;
   min-height: 65vh;
@@ -9,9 +56,13 @@
   margin: 5px;
 }
 .image {
-  height: 30vh;
+  height: 40vh;
   width: auto;
   border-radius: 15px;
+}
+.image:hover {
+  cursor: pointer;
+  transform: scale(2.2, 2.2);
 }
 .model-price {
   display: flex;
@@ -24,7 +75,8 @@
 .sub-product {
   margin: 5px;
   padding: 10px;
-  font-size: large;
+  font-size: xx-large;
+  color: rgb(21, 22, 21);
 }
 .price {
   border: 1px dotted orange;

@@ -1,42 +1,50 @@
 import React from "react";
 import "./Filters.css";
 
-function Filters({ filters }) {
+function Filters({ filters, onFilterChange }) {
   return (
     <div className="Filters">
       <div className="sub-filters">
-        <label for="brand">Choose a Brand</label>
+        <label>Choose a Brand</label>
         <select
           className="filter"
-          onChange={(e) => console.log(e.target.value)}
+          onChange={(e) => {
+            onFilterChange("brand", e.target.value);
+          }}
         >
           <option>none</option>
           {filters.brands.map((f) => (
-            <option value={f.value}>{f}</option>
+            <option key={f.value} value={f.value}>
+              {f}
+            </option>
           ))}
         </select>
       </div>
       <div className="sub-filters">
-        <label for="category">Choose a Category</label>
+        <label>Choose a Category</label>
         <select
           className="filter"
           onChange={(e) => console.log(e.target.value)}
         >
           <option>None</option>
           {filters.categories.map((f) => (
-            <option value={f.value}>{f}</option>
+            <option key={f.value} value={f.value}>
+              {f}
+            </option>
           ))}
         </select>
       </div>
       <div className="sub-filters">
-        <label for="price">Choose a Price</label>
+        <label>Choose a Price</label>
         <select
           className="filter"
           onChange={(e) => console.log(e.target.value)}
         >
           <option>None</option>
           {filters.prices.map((f) => (
-            <option value={f.value}>{f}</option>
+            <option key={f.value} value={f.value}>
+              {f}
+            </option>
           ))}
         </select>
       </div>
