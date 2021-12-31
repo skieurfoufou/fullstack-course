@@ -57,8 +57,7 @@ const products = [
     id: "A7",
     price: 850,
     model: "WC Rebels e-GS",
-    image_url:
-      "https://www.icon-icon.com/wp-content/uploads/2021/06/HEAD-1-1024x805.png",
+    image_url: "./images/Head-WC-Rebels-i-GS.jpg",
     category: "competition-giant",
     brand: "Head",
     sizes: "167,172,177,182",
@@ -67,8 +66,7 @@ const products = [
     id: "A8",
     price: 800,
     model: "WC Rebels e-Sl",
-    image_url:
-      "https://www.icon-icon.com/wp-content/uploads/2021/06/HEAD-1-1024x805.png",
+    image_url: "./images/Head-WC-Rebels-e-SL.jpg",
     category: "competition-slalom",
     brand: "Head",
     sizes: "150,155,160,165",
@@ -77,8 +75,7 @@ const products = [
     id: "A9",
     price: 600,
     model: "Rebel e-Speed",
-    image_url:
-      "https://www.icon-icon.com/wp-content/uploads/2021/06/HEAD-1-1024x805.png",
+    image_url: "./images/Head-rebel-i-speed.jpg",
     category: "slope",
     brand: "Head",
     sizes: "157,162,167,172,177",
@@ -87,8 +84,7 @@ const products = [
     id: "A10",
     price: 830,
     model: "Speed Course Master GS",
-    image_url:
-      "https://www.nicepng.com/png/detail/804-8041120_northern-ski-works-carries-a-broad-selection-of.png",
+    image_url: "./images/Dynastar-WC-FIS-GS.jpg",
     category: "competition-giant",
     brand: "Dynastar",
     sizes: "167,172,177,182",
@@ -97,8 +93,7 @@ const products = [
     id: "A11",
     price: 780,
     model: "Speed Course Master Sl",
-    image_url:
-      "https://www.nicepng.com/png/detail/804-8041120_northern-ski-works-carries-a-broad-selection-of.png",
+    image_url: "./images/Dynastar-WC-FIS-SL.jpg",
     category: "competition-slalom",
     brand: "Dynastar",
     sizes: "150,155,160,165",
@@ -107,8 +102,7 @@ const products = [
     id: "A12",
     price: 750,
     model: "Speed 963 Konect",
-    image_url:
-      "https://www.nicepng.com/png/detail/804-8041120_northern-ski-works-carries-a-broad-selection-of.png",
+    image_url: "./images/Dynastar-Speed-963.jpg",
     category: "slope",
     brand: "Dynastar",
     sizes: "157,162,167,172,177",
