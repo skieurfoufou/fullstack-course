@@ -10,9 +10,10 @@ function Filters({ filters, onFilterChange }) {
           className="filter"
           onChange={(e) => {
             onFilterChange("brand", e.target.value);
+            console.log(e.target.value);
           }}
         >
-          <option>none</option>
+          <option value="">None</option>
           {filters.brands.map((f) => (
             <option key={f.value} value={f.value}>
               {f}
@@ -24,9 +25,11 @@ function Filters({ filters, onFilterChange }) {
         <label>Choose a Category</label>
         <select
           className="filter"
-          onChange={(e) => console.log(e.target.value)}
+          onChange={(e) => {
+            onFilterChange("category", e.target.value);
+          }}
         >
-          <option>None</option>
+          <option value="">None</option>
           {filters.categories.map((f) => (
             <option key={f.value} value={f.value}>
               {f}
@@ -38,9 +41,11 @@ function Filters({ filters, onFilterChange }) {
         <label>Choose a Price</label>
         <select
           className="filter"
-          onChange={(e) => console.log(e.target.value)}
+          onChange={(e) => {
+            onFilterChange("price", e.target.value);
+          }}
         >
-          <option>None</option>
+          <option value="">None</option>
           {filters.prices.map((f) => (
             <option key={f.value} value={f.value}>
               {f}

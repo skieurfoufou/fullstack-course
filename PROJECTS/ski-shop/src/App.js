@@ -7,8 +7,8 @@ import { useState } from "react";
 
 const filtersValues = {
   brands: ["Rossignol", "Salomon", "Dynastar", "Head"],
-  categories: ["Competion SL", "Competion GS", "Slope"],
-  prices: ["200-500", "501-700", "701-1000"],
+  categories: ["competition-giant", "competition-slalom", "slope"],
+  prices: ["200-500", "501-750", "751-1000"],
 };
 
 function App() {
@@ -24,8 +24,24 @@ function App() {
     setFilters(newFilters);
 
     //TODO: filters productsData by those filters
-    const newProducts = [];
+    let newProducts = [...productsData];
+    if (newFilters.brand !== "") {
+      newProducts = newProducts.filter(
+        (product) => product.brand === newFilters.brand
+      );
+    }
+    if (newFilters.category !== "") {
+      newProducts = newProducts.filter(
+        (product) => product.category === newFilters.category
+      );
+    }
+    if (newFilters.price !== "") {
+      const [lowPrice, highPrice] = newFilters.price.split("-");
 
+      newProducts = newProducts.filter(
+        (product) => product.price >= lowPrice && product.price <= highPrice
+      );
+    }
     setProducts(newProducts);
   };
 
@@ -33,7 +49,11 @@ function App() {
     <div className="back">
       <Title text="SKI SHOP" />
       <Filters filters={filtersValues} onFilterChange={onFilterChange} />
-      <ProductsList products={products} />
+      {products.length !== 0 ? (
+        <ProductsList products={products} />
+      ) : (
+        <p>No products</p>
+      )}
     </div>
   );
 }
