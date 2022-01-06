@@ -273,7 +273,7 @@ function App() {
   ];
   return (
     <>
-      <Header />
+      <Header products={products} />
       <Products products={products} />
     </>
   );

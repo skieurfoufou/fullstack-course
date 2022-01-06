@@ -1,3 +1,5 @@
+import "./Todo.css";
+
 const myHandler = () => alert("clicked");
 
 const InnerElement = () => <div>InnerElement</div>;
@@ -10,10 +12,10 @@ const SimpleElement = () => (
 );
 ReactDOM.render(SimpleElement, document.getElementById("app"));
 
-function Todo({ id, title }) {
+export default function Todo({ id, title, completed }) {
   return (
-    <div>
-      {id} {title}
+    <div className={`Todo${completed ? "completed" : ""}`}>
+      Todo ID:{id} Title: {title}
     </div>
   );
 }

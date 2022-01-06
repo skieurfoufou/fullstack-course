@@ -1,20 +1,22 @@
-export default function Header() {
+export default function Header({ products }) {
   return (
     <nav className="product-filter">
-      <h1>Jackets</h1>
+      <h1>GOCODE SHOP</h1>
 
       <div className="sort">
         <div className="collection-sort">
           <label>Filter by:</label>
           <select>
-            <option value="/">All Jackets</option>
+            {/* const categories = products.map(p => p.category).filter((value, index, array) => array.indexOf(value)===index); */}
+
+            {/* <option value="/">All Jackets</option>
             <option value="/">2016</option>
             <option value="/">jacket</option>
             <option value="/">Jackets</option>
             <option value="/">layers</option>
             <option value="/">Obermeyer</option>
             <option value="/">Roxy</option>
-            <option value="/">womens</option>
+            <option value="/">womens</option> */}
           </select>
         </div>
 
