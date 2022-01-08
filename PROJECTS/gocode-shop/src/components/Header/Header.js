@@ -1,4 +1,10 @@
-export default function Header({ products }) {
+import "./Header.css";
+
+export default function Header({ products, onChangeFilter }) {
+  const categories = products
+    .map((p) => p.category)
+    .filter((value, index, array) => array.indexOf(value) === index);
+
   return (
     <nav className="product-filter">
       <h1>GOCODE SHOP</h1>
@@ -6,17 +12,15 @@ export default function Header({ products }) {
       <div className="sort">
         <div className="collection-sort">
           <label>Filter by:</label>
-          <select>
-            {/* const categories = products.map(p => p.category).filter((value, index, array) => array.indexOf(value)===index); */}
 
-            {/* <option value="/">All Jackets</option>
-            <option value="/">2016</option>
-            <option value="/">jacket</option>
-            <option value="/">Jackets</option>
-            <option value="/">layers</option>
-            <option value="/">Obermeyer</option>
-            <option value="/">Roxy</option>
-            <option value="/">womens</option> */}
+          <select onChange={onChangeFilter}>
+            <option value="all">All</option>
+            {categories.map((categorie) => (
+              <option key={categorie} value={categorie}>
+                {categorie}
+              </option>
+            ))}
+            ;
           </select>
         </div>
 

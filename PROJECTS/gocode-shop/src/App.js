@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Products from "./components/Products/Products";
@@ -271,10 +272,24 @@ function App() {
       },
     },
   ];
+
+  const [filterProducts, setFilterProducts] = useState(products);
+
+  function onChangeFilter(e) {
+    if (e.target.value === "all") {
+      setFilterProducts(products);
+    } else {
+      const newProducts = products.filter(
+        (value) => value.category === e.target.value
+      );
+      setFilterProducts(newProducts);
+    }
+  }
+
   return (
     <>
-      <Header products={products} />
-      <Products products={products} />
+      <Header products={products} onChangeFilter={onChangeFilter} />
+      <Products products={filterProducts} />
     </>
   );
 }
