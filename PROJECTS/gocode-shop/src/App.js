@@ -1,7 +1,10 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Products from "./components/Products/Products";
+import Cart from "./components/Cart/Cart";
+import ProductContext from "./contexts/ProductContext";
+import CartContext from "./contexts/CartContext";
 
 function App() {
   const products = [
@@ -273,23 +276,95 @@ function App() {
     },
   ];
 
-  const [filterProducts, setFilterProducts] = useState(products);
+  const [initProductsList, setInitProductsList] = useState(products);
+  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [cartItems, setCartItems] = useState([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
-  function onChangeFilter(e) {
+  // useEffect(() => {
+  //   async function fetchProducts() {
+  //     const res = await fetch("https://fakestoreapi.com/products/");
+  //     const data = await res.jason();
+  //     setInitProductsList(data);
+  //     setFilterProducts(data);
+  //   }
+  //   fetchProducts();
+  // }, []);
+
+  function filterProducts(e) {
     if (e.target.value === "all") {
-      setFilterProducts(products);
+      setFilteredProducts(initProductsList);
     } else {
-      const newProducts = products.filter(
+      const newProducts = initProductsList.filter(
         (value) => value.category === e.target.value
       );
-      setFilterProducts(newProducts);
+      setFilteredProducts(newProducts);
+    }
+  }
+  function onCartClick() {
+    if (isCartOpen) {
+      setIsCartOpen(false);
+    } else {
+      setIsCartOpen(true);
     }
   }
 
+  function onAddProduct(product) {
+    const newCartItems = [...cartItems];
+    const foundItem = newCartItems.find((el) => el.id === product.id);
+    if (foundItem) {
+      foundItem.quantity++;
+      setCartItems(newCartItems);
+    } else {
+      const cartItem = {
+        id: product.id,
+        title: product.title,
+        image: product.image,
+        price: product.price,
+        quantity: 1,
+      };
+      setCartItems([...cartItems, cartItem]);
+    }
+  }
+
+  function onRemoveProduct(product) {
+    let newCartItems = [...cartItems];
+
+    const foundItem = newCartItems.find((el) => el.id === product.id);
+
+    if (foundItem.quantity > 1) {
+      foundItem.quantity--;
+      setCartItems(newCartItems);
+    } else {
+      setCartItems(newCartItems.filter((el) => el.id !== foundItem.id));
+    }
+  }
+
+  function calculateTotalCartQuantity() {
+    return cartItems.reduce((acc, item) => acc + item.quantity, 0);
+  }
+
+  function calculateTotalCartPrice() {
+    return cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0);
+  }
   return (
     <>
-      <Header products={products} onChangeFilter={onChangeFilter} />
-      <Products products={filterProducts} />
+      <Header
+        products={initProductsList}
+        onChangeFilter={filterProducts}
+        onCartClick={onCartClick}
+        itemsCounter={calculateTotalCartQuantity()}
+      />
+      <div className="products-cart">
+        <ProductContext.Provider value={{ onAddProduct }}>
+          <Products products={filteredProducts} />
+          <CartContext.Provider
+            value={{ calculateTotalCartPrice, onRemoveProduct }}
+          >
+            {isCartOpen && <Cart cartItems={cartItems} />}{" "}
+          </CartContext.Provider>
+        </ProductContext.Provider>
+      </div>
     </>
   );
 }

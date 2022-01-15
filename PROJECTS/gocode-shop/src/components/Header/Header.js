@@ -1,6 +1,11 @@
 import "./Header.css";
 
-export default function Header({ products, onChangeFilter }) {
+export default function Header({
+  products,
+  onChangeFilter,
+  onCartClick,
+  itemsCounter,
+}) {
   const categories = products
     .map((p) => p.category)
     .filter((value, index, array) => array.indexOf(value) === index);
@@ -38,6 +43,9 @@ export default function Header({ products, onChangeFilter }) {
           </select>
         </div>
       </div>
+      <button className="button-cart" onClick={onCartClick}>
+        🛒 {itemsCounter}
+      </button>
     </nav>
   );
 }

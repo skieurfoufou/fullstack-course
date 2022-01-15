@@ -1,11 +1,14 @@
 .product-filter {
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
   padding: 30px 0;
+  background-color: rgb(247, 210, 156);
 }
 
 .sort {
   display: flex;
-  align-self: flex-end;
+  /* align-self: flex-end; */
 }
 
 .collection-sort {
@@ -25,9 +28,14 @@ label {
 }
 
 h1 {
-  font-size: 28px;
+  font-size: 40px;
   font-weight: 300;
-  flex: 1;
+  /*flex: 1;*/
+}
+
+.button-cart {
+  margin: 1%;
+  font-size: x-large;
 }
 
 @media (max-width: 480px) {

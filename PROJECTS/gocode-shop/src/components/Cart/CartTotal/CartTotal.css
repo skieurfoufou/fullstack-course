@@ -1,0 +1,28 @@
+.totalPrice-container {
+  background-color: rgb(248, 181, 79);
+  font-size: 20px;
+  border-radius: 35px;
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+  padding: 10px;
+  align-items: center;
+}
+.totalPrice {
+  font-size: 25px;
+  font-weight: bold;
+}
+.button-checkout {
+  background-color: rgb(248, 181, 79);
+  color: brown;
+  font-size: 30px;
+  border-radius: 35px;
+  margin: 10px;
+  padding: 10px;
+  align-items: center;
+}
+.cartTotal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

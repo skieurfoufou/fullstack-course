@@ -1,4 +1,6 @@
 .products {
   display: flex;
   flex-wrap: wrap;
+  gap: 5px;
+  background-color: rgb(236, 236, 236);
 }

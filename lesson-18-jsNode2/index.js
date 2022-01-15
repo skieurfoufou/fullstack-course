@@ -38,11 +38,18 @@ async function conn1() {
     console.log(e);
   }
 }
-async function find() {
+async function getConnection() {
   try {
-    const connection = await mongoose.connect(
+    return await mongoose.connect(
       `mongodb+srv://mordehai:${key}@cluster0.1hf6s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
     );
+  } catch (e) {
+    console.log(e);
+  }
+}
+async function find() {
+  try {
+    const connection = await getConnection();
     const Cat = connection.model("Cat", { name: String });
     const cats = await Cat.find();
     console.log(cats);
@@ -53,9 +60,7 @@ async function find() {
 }
 async function findOneAndUpdate() {
   try {
-    const connection = await mongoose.connect(
-      `mongodb+srv://mordehai:${key}@cluster0.1hf6s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
-    );
+    const connection = await getConnection();
     const Cat = connection.model("Cat", { name: String });
     const cats = await Cat.findOneAndUpdate(
       { name: "monchat" },

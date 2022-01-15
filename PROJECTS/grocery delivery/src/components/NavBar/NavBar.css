@@ -1,0 +1,20 @@
+.NavBar {
+  background-color: coral;
+  display: flex;
+  justify-content: space-evenly;
+  height: 10vh;
+}
+
+.form-inline,
+.form-input,
+.btn {
+  margin-top: 1.5vh;
+  height: 4vh;
+  font-size: x-large;
+}
+.navbar-brand {
+  margin-top: 2vh;
+  height: 6vh;
+  font-size: 5vh;
+  color: brown;
+}
