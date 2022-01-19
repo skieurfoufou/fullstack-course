@@ -1,9 +1,10 @@
 import React from "react";
-import CartContext from "../../../contexts/CartContext";
 import { useContext } from "react";
+import CartContext from "../../../contexts/CartContext";
+
 import "./CartTotal.css";
 
-function CartTotal() {
+function CartTotal(onCartCheckoutClick) {
   const { calculateTotalCartPrice } = useContext(CartContext);
 
   return (
@@ -15,7 +16,9 @@ function CartTotal() {
           {calculateTotalCartPrice().toFixed(2)} $
         </span>
       </div>
-      <button className="button-checkout">Checkout</button>
+      <button className="button-checkout" onClick={onCartCheckoutClick}>
+        Checkout
+      </button>
     </div>
   );
 }

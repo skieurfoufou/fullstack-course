@@ -36,6 +36,12 @@ h1 {
 .button-cart {
   margin: 1%;
   font-size: x-large;
+  transition-duration: 0.5s;
+}
+
+.button-cart:hover {
+  background-color: burlywood;
+  color: rgb(238, 74, 74);
 }
 
 @media (max-width: 480px) {
