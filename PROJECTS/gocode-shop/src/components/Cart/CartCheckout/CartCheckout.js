@@ -1,9 +1,10 @@
 import React from "react";
+import "./CartCheckout.css";
 
-function CartCheckout() {
+function CartCheckout({ onCancel }) {
   return (
-    <div className="CartCheckout-container">
-      ah ah
+    <>
+      <div className="drop-shadow" onClick={onCancel}></div>
       <div className="CartCheckout-form">
         <label>name</label>
         <input placeholder="name"></input>
@@ -14,7 +15,7 @@ function CartCheckout() {
         <label>state</label>
         <input placeholder="state"></input>
       </div>
-    </div>
+    </>
   );
 }
 

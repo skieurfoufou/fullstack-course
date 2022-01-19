@@ -8,18 +8,14 @@ const Cart = ({ cartItems }) => {
   const [isCartCheckoutOpen, setIsCartCheckoutOpen] = useState(false);
 
   function onCartCheckoutClick() {
-    if (isCartCheckoutOpen) {
-      setIsCartCheckoutOpen(false);
-    } else {
-      setIsCartCheckoutOpen(true);
-    }
+    setIsCartCheckoutOpen(!isCartCheckoutOpen);
   }
 
   return (
     <div className="cart-container">
       <CartList cartItems={cartItems} />
       <CartTotal onCartCheckoutClick={onCartCheckoutClick} />
-      {isCartCheckoutOpen && <CartCheckOut />}
+      {isCartCheckoutOpen && <CartCheckOut onCancel={onCartCheckoutClick} />}
     </div>
   );
 };

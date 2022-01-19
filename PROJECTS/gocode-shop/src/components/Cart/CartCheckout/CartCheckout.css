@@ -1,9 +1,25 @@
-.CartCheckout-container {
-  width: max-content;
-  height: max-content;
+.drop-shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.589);
   z-index: 10;
 }
+
 .CartCheckout-form {
-  z-index: 100;
+  position: fixed;
+  top: 35%;
+  left: 35%;
+  background-color: beige;
+  width: 30%;
+  height: 30%;
+  border-radius: 25px;
+  z-index: 20;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }

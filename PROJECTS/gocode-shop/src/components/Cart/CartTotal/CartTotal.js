@@ -4,7 +4,7 @@ import CartContext from "../../../contexts/CartContext";
 
 import "./CartTotal.css";
 
-function CartTotal(onCartCheckoutClick) {
+function CartTotal({ onCartCheckoutClick }) {
   const { calculateTotalCartPrice } = useContext(CartContext);
 
   return (

@@ -41,7 +41,7 @@ h1 {
 
 .button-cart:hover {
   background-color: burlywood;
-  color: rgb(238, 74, 74);
+  color: rgb(255, 255, 255);
 }
 
 @media (max-width: 480px) {

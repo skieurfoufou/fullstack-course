@@ -11,7 +11,6 @@ export default function Product({ product }) {
     <div className="product-card">
       <div className="product-image">
         <Link to={`/productPage/${product.id}`}>
-          {" "}
           <img alt="product" src={product.image} />
         </Link>
       </div>

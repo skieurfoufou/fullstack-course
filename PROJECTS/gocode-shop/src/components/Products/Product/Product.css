@@ -25,8 +25,8 @@ h4 {
   transition-duration: 0.5s;
 }
 
-.product-image:hover {
-  background-color: rosybrown;
+.product-image img:hover {
+  opacity: 0.6;
 }
 
 .product-info {
