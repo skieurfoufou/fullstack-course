@@ -16,7 +16,7 @@ export default function Product({ product }) {
       </div>
       <div className="product-info">
         <h3>{product.title}</h3>
-        <h4>{product.price}</h4>
+        <h4>{product.price} $</h4>
       </div>
       <button className="product-button" onClick={() => onAddProduct(product)}>
         Add to CART

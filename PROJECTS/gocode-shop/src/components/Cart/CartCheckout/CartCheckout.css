@@ -10,16 +10,34 @@
 
 .CartCheckout-form {
   position: fixed;
-  top: 35%;
-  left: 35%;
+  top: 10%;
+  left: 30%;
   background-color: beige;
-  width: 30%;
-  height: 30%;
+  width: 40%;
+  height: 80%;
   border-radius: 25px;
   z-index: 20;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+}
+.label-checkout,
+.input-checkout {
+  border-radius: 5px;
+  padding: 0.5%;
+  margin: 0.5%;
+  font-weight: bold;
+  font-size: x-large;
+}
+.label-checkout {
+  background-color: rgb(223, 195, 158);
+  color: rgb(51, 36, 16);
+}
+.button-submit {
+  border-radius: 10px;
+  padding: 2%;
+  margin: 2%;
+  font-size: xx-large;
 }
