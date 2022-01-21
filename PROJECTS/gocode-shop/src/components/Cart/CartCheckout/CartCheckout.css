@@ -7,17 +7,24 @@
   background-color: rgba(0, 0, 0, 0.589);
   z-index: 10;
 }
-
-.CartCheckout-form {
+.div-CartCheckout {
   position: fixed;
-  top: 10%;
-  left: 30%;
   background-color: beige;
-  width: 40%;
-  height: 80%;
+  top: 5%;
+  left: 25%;
+  width: 50%;
+  max-height: 90%;
+  min-height: 30%;
   border-radius: 25px;
   z-index: 20;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-checkout,
+.div-alert {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,9 +42,25 @@
   background-color: rgb(223, 195, 158);
   color: rgb(51, 36, 16);
 }
-.button-submit {
+.button-submit,
+.button-order {
   border-radius: 10px;
   padding: 2%;
   margin: 2%;
   font-size: xx-large;
+}
+.div-error {
+  color: red;
+}
+.div-cellphone,
+.div-country-continent {
+  display: flex;
+  flex-direction: row;
+}
+.alert-success {
+  font-size: 3rem;
+  color: salmon;
+  font-weight: bold;
+  border: 2px solid sienna;
+  text-align: center;
 }
