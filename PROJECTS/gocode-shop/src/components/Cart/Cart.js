@@ -20,7 +20,13 @@ const Cart = ({ cartItems }) => {
   return (
     <div className="cart-container">
       <CartList cartItems={cartItems} />
-      <CartTotal onCartCheckoutClick={onCartCheckoutClick} />
+      <CartTotal />
+      <button className="button-checkout" onClick={onCartCheckoutClick}>
+        Checkout
+      </button>
+      <button className="button-order" onClick={onCartOrderClick}>
+        Order
+      </button>
       {isCartCheckoutOpen && <CartCheckOut onCancel={onCartCheckoutClick} />}
       {isCartOrderOpen && <CartOrder onCancel={onCartOrderClick} />}
     </div>

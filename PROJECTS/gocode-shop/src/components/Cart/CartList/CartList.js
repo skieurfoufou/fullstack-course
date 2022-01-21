@@ -4,7 +4,7 @@ import React from "react";
 
 const CartList = ({ cartItems }) => {
   return (
-    <section className="">
+    <section className="CartList-container">
       {cartItems.map((item) => (
         <CartItem key={item.id} item={item} />
       ))}

@@ -16,7 +16,7 @@ export default function ProductPage() {
       const foundProduct = products.find((p) => p.id === Number(id));
       setProduct(foundProduct);
     }, 1000);
-  }, []);
+  }, [id]);
 
   const { onAddProduct } = useContext(ProductContext);
 

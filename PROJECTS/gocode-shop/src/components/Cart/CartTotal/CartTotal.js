@@ -3,7 +3,7 @@ import { useContext } from "react";
 import CartContext from "../../../contexts/CartContext";
 import "./CartTotal.css";
 
-function CartTotal({ onCartCheckoutClick, onCartOrderClick }) {
+function CartTotal() {
   const { calculateTotalCartPrice } = useContext(CartContext);
 
   return (
@@ -11,16 +11,9 @@ function CartTotal({ onCartCheckoutClick, onCartOrderClick }) {
       <div className="totalPrice-container">
         TOTAL AMOUNT :
         <span className="totalPrice">
-          {" "}
           {calculateTotalCartPrice().toFixed(2)} $
         </span>
       </div>
-      <button className="button-checkout" onClick={onCartCheckoutClick}>
-        Checkout
-      </button>
-      <button className="button-order" onClick={onCartOrderClick}>
-        Order
-      </button>
     </div>
   );
 }

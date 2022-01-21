@@ -45,7 +45,10 @@ export default function Header({
         </div>
       </div>
       <button className="button-cart" onClick={onCartClick}>
-        🛒 {itemsCounter}
+        <span role="img" aria-label="cart" aria-labelledby="cart">
+          🛒
+        </span>{" "}
+        {itemsCounter}
       </button>
     </nav>
   );
