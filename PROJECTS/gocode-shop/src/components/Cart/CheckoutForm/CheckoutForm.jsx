@@ -1,11 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
+
+import "./CheckoutForm.css";
+import Input from "./Input/Input";
+import Select from "./Select/Select";
 
 function CheckoutForm({ onIsSubmitSuccessful }) {
   const { register, handleSubmit, formState } = useForm({
     mode: "onSubmit",
   });
-  const { isSubmitting, isSubmitSuccessful, errors } = formState;
+  const { isSubmitting, errors } = formState;
 
   const onSubmit = (data) => {
     onIsSubmitSuccessful(data);
@@ -14,56 +18,41 @@ function CheckoutForm({ onIsSubmitSuccessful }) {
   return (
     <form className="form-checkout" onSubmit={handleSubmit(onSubmit)}>
       <h1>Inscription</h1>
-      <label htmlFor="name" className="label-checkout">
-        name
-      </label>
-      <input
-        className="input-checkout"
-        type="text"
+      <Input
+        register={register}
+        error={errors.name}
         name="name"
-        placeholder="name"
-        {...register("name", { required: true, pattern: /[A-Za-z]{3}/ })}
-      ></input>
-      {errors.name && (
-        <div className="div-error">
-          This field is required, at least 3 letters{" "}
-        </div>
-      )}
-      <label htmlFor="surname" className="label-checkout">
-        surname
-      </label>
-      <input
-        className="input-checkout"
+        errorMessage="This field is required, at least 3 letters"
+        required
         type="text"
+        rules={{ pattern: /[A-Za-z]{3}/ }}
+      />
+
+      <Input
+        register={register}
+        error={errors.surname}
         name="surname"
-        placeholder="surname"
-        {...register("surname", { required: true })}
-      ></input>
-      {errors.surname && (
-        <div className="div-error">This field is required</div>
-      )}
-      <label htmlFor="address" className="label-checkout">
-        address
-      </label>
-      <input
-        className="input-checkout"
+        errorMessage="This field is required"
+        required
         type="text"
+      />
+
+      <Input
+        register={register}
+        error={errors.address}
         name="address"
-        placeholder="address"
-        {...register("address", { required: true })}
-      ></input>
-      {errors.address && (
-        <div className="div-error">This field is required</div>
-      )}
-      <label htmlFor="country" className="label-checkout">
-        continent & country
-      </label>
+        errorMessage="This field is required"
+        required
+        type="text"
+      />
+
       <div className="div-country-continent">
-        <select
-          className="input-checkout"
-          id="continent"
+        <Select
+          register={register}
+          error={errors.continent}
           name="continent"
-          {...register("continent", { required: true })}
+          errorMessage="This field is required"
+          required
         >
           <option value="europe">Europe</option>
           <option value="north-america">North America</option>
@@ -71,44 +60,29 @@ function CheckoutForm({ onIsSubmitSuccessful }) {
           <option value="asia">Asia</option>
           <option value="africa">Africa</option>
           <option value="oceania">Oceania</option>
-        </select>
-        {errors.continent && (
-          <div className="div-error">This field is required</div>
-        )}
-        <input
-          className="input-checkout"
-          type="text"
+        </Select>
+
+        <Input
+          register={register}
+          error={errors.country}
           name="country"
-          placeholder="country"
-          {...register("country", { required: true })}
-        ></input>
-        {errors.country && (
-          <div className="div-error">This field is required</div>
-        )}
+          errorMessage="This field is required"
+          required
+          type="text"
+        />
       </div>
-      <label htmlFor="email" className="label-checkout">
-        email
-      </label>
-      <input
-        className="input-checkout"
-        type="email"
+
+      <Input
+        register={register}
+        error={errors.email}
         name="email"
-        placeholder="email"
-        {...register("email", { required: true })}
-      ></input>
-      {errors.email && <div className="div-error">This field is required</div>}
-      <label htmlFor="cellphone" className="label-checkout">
-        cellphone
-      </label>
+        errorMessage="This field is required"
+        required
+        type="email"
+      />
+
       <div className="div-cellphone">
-        <select
-          className="input-checkout"
-          type="number"
-          name="beforeCellphone"
-          {...register("before-cellphone", {
-            required: true,
-          })}
-        >
+        <Select register={register} name="indicator" required>
           {Array(10)
             .fill(null)
             .map((_, idx) => {
@@ -119,24 +93,19 @@ function CheckoutForm({ onIsSubmitSuccessful }) {
                 </option>
               );
             })}
-        </select>
-        <input
-          className="input-checkout"
-          type="number"
+        </Select>
+
+        <Input
+          register={register}
+          error={errors.cellphone}
           name="cellphone"
-          placeholder="cellphone"
-          {...register("cellphone", {
-            required: true,
-            minLength: 7,
-            maxLength: 7,
-          })}
-        ></input>
-        {errors.cellphone && (
-          <div className="div-error">
-            This field is required,min and max 7 numbers
-          </div>
-        )}
+          errorMessage="This field is required,min and max 7 numbers"
+          required
+          type="number"
+          rules={{ minLength: 7, maxLength: 7 }}
+        />
       </div>
+
       <button type="submit" disabled={isSubmitting} className="button-submit">
         Submit
       </button>
