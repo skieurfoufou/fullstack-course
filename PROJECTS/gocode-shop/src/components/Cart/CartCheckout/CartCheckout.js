@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { setLocalItem } from "../../../utils/localStorage";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
 import "./CartCheckout.css";
 
@@ -7,7 +8,7 @@ function CartCheckout({ onCancel }) {
 
   const onIsSubmitSuccessful = (data) => {
     console.log(data);
-    localStorage.setItem("client", data); // Alt - send req to backend
+    setLocalItem("client", data);
     setIsSubmitSuccessful(true);
   };
 
