@@ -38,14 +38,14 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #e2bc11;
   min-height: 10vh;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(223, 132, 14);
 }
 .div-header {
   display: flex;
@@ -57,4 +57,5 @@
 .App-logo {
   height: 5vmin;
   pointer-events: none;
+  color: black;
 }
