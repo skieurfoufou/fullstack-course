@@ -14,28 +14,27 @@ function Filters({ filters, onFilterChange }) {
       />
 
       <Filter
-        label="Sort by Price"
+        label="Sort by Artist"
         onFilterChange={(e) => {
-          onFilterChange("price", e.target.value);
+          onFilterChange("artist", e.target.value);
         }}
-        filters={filters.price}
-        suffix="₪"
+        filters={filters.artist}
       />
 
       <Filter
-        label="Sort by Color"
+        label="Sort by language"
         onFilterChange={(e) => {
-          onFilterChange("colors", e.target.value);
+          onFilterChange("language", e.target.value);
         }}
-        filters={filters.colors}
+        filters={filters.language}
       />
 
       <Filter
-        label="Sort by Season"
+        label="Sort by Years"
         onFilterChange={(e) => {
-          onFilterChange("season", e.target.value);
+          onFilterChange("years", e.target.value);
         }}
-        filters={filters.season}
+        filters={filters.years}
       />
     </div>
   );
