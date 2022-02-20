@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import AddItemForm from "./components/AddItemForm/AddItemForm";
 import SongsList from "./components/SongsList/SongsList";
 import Filters from "./components/Filters/Filters";
+import ReactPlayer from "react-player";
 
 const songsList = [
   {
@@ -86,6 +87,13 @@ function App() {
       <Header />
       {/* <Filters filters={filtersValues} onFilterChange={onFilterChange}/> */}
       <AddItemForm addSongToList={addSongToList} />
+      <div className="div-ReactPlayer">
+        <ReactPlayer
+          url="https://www.youtube.com/watch?v=lor9IFbUZQM"
+          playing="true"
+          controls="true"
+        />
+      </div>
       <SongsList songsList={songs} removeSong={removeSong} />
     </div>
   );
