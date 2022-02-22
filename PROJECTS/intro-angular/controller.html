@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  </head>
+  <body ng-app>
+    <script>
+      function skisController($scope) {
+        console.log("coucou");
+        $scope.skis = [
+          { marque: "Salomon", model: "race" },
+          { marque: "Salomon", model: "gd Public" },
+          { marque: "Salomon", model: "all Mountain" },
+          { marque: "Rossignol", model: "race" },
+          { marque: "Rossignol", model: "gd Public" },
+          { marque: "Rossignol", model: "all Mountain" },
+        ];
+      }
+    </script>
+    <label>Filtrer selon</label>
+    <input type="text" ng-model="query" />
+    <select ng-model="order">
+      <option value="marque">La Marque</option>
+      <option value="model">Le Model</option>
+    </select>
+    <div ng-controller="skisController">
+      <div ng-repeat="ski in skis | filter:{model:query }| orderBy:order">
+        <p>
+          <strong>{{ski.marque | uppercase}}</strong>
+          model {{ski.model | lowercase}}
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
