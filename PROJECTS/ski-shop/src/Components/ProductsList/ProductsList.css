@@ -1,7 +1,0 @@
-.Product-list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  background-image: url("https://blog.okapi.fr/image/59f78a6a96807_dBKjnVOsWHB2nJZJZ4REnCaNoNg@906x453.png");
-}
